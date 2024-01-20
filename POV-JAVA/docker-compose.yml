@@ -21,7 +21,6 @@ services:
     image: openjdk:17
     build:
       context: ./microservice-event-spring
-      dockerfile: Dockerfile
     ports:
       - "6661:6661"
     volumes:
@@ -39,7 +38,6 @@ services:
       - "6662:6662"
     build:
       context: ./microserice-reservation-spring
-      dockerfile: Dockerfile
     volumes:
       - ./microserice-reservation-spring/target:/app
     environment:
