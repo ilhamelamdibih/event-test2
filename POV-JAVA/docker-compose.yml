@@ -20,11 +20,10 @@ services:
   event-service:
     image: openjdk:17
     build:
-      context: ./microservice-event-spring
+      context: ./POV-JAVA/microservice-event-spring
     ports:
       - "6661:6661"
-    volumes:
-      - ./microservice-event-spring/target:/app
+
     environment:
       - "SPRING_DATASOURCE_URL=jdbc:mysql://mysql-database:3306/service_event?createDatabaseIfNotExist=true&serverTimezone=UTC"
     depends_on:
@@ -37,9 +36,8 @@ services:
     ports:
       - "6662:6662"
     build:
-      context: ./microserice-reservation-spring
-    volumes:
-      - ./microserice-reservation-spring/target:/app
+      context: ./POV-JAVA/microserice-reservation-spring
+
     environment:
       - "SPRING_DATASOURCE_URL=jdbc:mysql://mysql-database:3306/service_event?createDatabaseIfNotExist=true&serverTimezone=UTC"
     depends_on:
