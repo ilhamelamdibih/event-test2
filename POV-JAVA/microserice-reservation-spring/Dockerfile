@@ -1,7 +1,11 @@
+FROM maven:3.8.4-openjdk-17 AS builder
+WORKDIR /reservation-app
+COPY ./src ./src
+COPY ./pom.xml .
+RUN mvn clean package
+
 FROM openjdk:17
-WORKDIR /App
-
-COPY /target/reservation-app.jar .
-
-
-ENTRYPOINT ["java", "-jar" , "reservation-app.jar"]
+VOLUME /tmp
+ARG JAR_FILE=target/*.jar
+COPY ${JAR_FILE} reservation-app.jar
+ENTRYPOINT ["java","-jar","/reservation-app.jar"]
