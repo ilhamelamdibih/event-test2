@@ -24,7 +24,6 @@ services:
       dockerfile: Dockerfile
     ports:
       - "6661:6661"
-    command: ["java", "-jar", "/app/event-app.jar"]
     volumes:
       - ./microservice-event-spring/target:/app
     environment:
@@ -41,7 +40,6 @@ services:
     build:
       context: ./microserice-reservation-spring
       dockerfile: Dockerfile
-    command: ["java", "-jar", "/app/reservation-app.jar"]
     volumes:
       - ./microserice-reservation-spring/target:/app
     environment:
